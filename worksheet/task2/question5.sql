@@ -4,12 +4,12 @@
 -- Expected Columns:
 -- StudentId, FirstName, LastName, TotalCreditsPassed
 
-SELECT student.StudentId, student.FirstName, student.LastName, SUM(enrolment.Grade) AS TotalCreditsPassed FROM student 
+SELECT student.StudentId, student.FirstName, student.LastName, enrolment.Grade AS TotalCreditsPassed FROM student 
 
 JOIN enrolment ON student.StudentId = enrolment.StudentId 
 
 WHERE enrolment.Grade >= 40
 
-GROUP BY student.StudentId
+GROUP BY student.StudentId, student.FirstName, student.LastName
 ;
 
